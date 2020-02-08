@@ -8,8 +8,8 @@
 	branch = thud
 [submodule "sources/meta-raspberrypi"]
 	path = sources/meta-raspberrypi
-	url = https://git.yoctoproject.org/cgit/cgit.cgi/meta-raspberrypi
-	branch = thud
+	url = git://git.yoctoproject.org/meta-raspberrypi
+	branch = master
 [submodule "sources/poky"]
 	path = sources/poky
 	url = git://git.yoctoproject.org/poky
