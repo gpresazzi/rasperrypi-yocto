@@ -1,1 +1,4 @@
+yocto/build/
+yocto/downloads/
+yocto/sstate-cache/
 docker/.Dockerfile.swp

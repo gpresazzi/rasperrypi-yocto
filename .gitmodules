@@ -9,7 +9,7 @@
 [submodule "sources/meta-raspberrypi"]
 	path = yocto/source/meta-raspberrypi
 	url = git://git.yoctoproject.org/meta-raspberrypi
-	branch = master
+	branch = thud
 [submodule "sources/poky"]
 	path = yocto/source/poky
 	url = git://git.yoctoproject.org/poky

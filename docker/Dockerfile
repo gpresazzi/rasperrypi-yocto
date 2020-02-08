@@ -42,6 +42,7 @@ USER $USER_NAME
 
 # Create the directory structure for the Yocto build in the container. The lowest two directory
 # levels must be the same as on the host.
+ENV YOCTO_DIR /home/$USER_NAME/yocto/
 ENV BUILD_INPUT_DIR /home/$USER_NAME/yocto/source
 ENV BUILD_OUTPUT_DIR /home/$USER_NAME/yocto/output
 RUN mkdir -p $BUILD_INPUT_DIR $BUILD_OUTPUT_DIR
@@ -54,5 +55,6 @@ WORKDIR $BUILD_INPUT_DIR
 # install the customised files bblayers.conf and local.conf. This script initialises the Yocto
 # build environment. The bitbake command builds the rootfs for our embedded device.
 WORKDIR $BUILD_OUTPUT_DIR
+WORKDIR $YOCTO_DIR
 #ENV TEMPLATECONF=$BUILD_INPUT_DIR/$PROJECT/sources/meta-$PROJECT/custom
 #CMD source $BUILD_INPUT_DIR/$PROJECT/sources/poky/oe-init-build-env && bitbake $PROJECT-image
