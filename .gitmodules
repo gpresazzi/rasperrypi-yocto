@@ -1,16 +1,16 @@
 [submodule "sources/meta-openembedded"]
-	path = sources/meta-openembedded
+	path = yocto/source/meta-openembedded
 	url = git://git.openembedded.org/meta-openembedded
 	branch = thud
 [submodule "sources/meta-qt5"]
-	path = sources/meta-qt5
+	path = yocto/source/meta-qt5
 	url = https://github.com/meta-qt5/meta-qt5
 	branch = thud
 [submodule "sources/meta-raspberrypi"]
-	path = sources/meta-raspberrypi
+	path = yocto/source/meta-raspberrypi
 	url = git://git.yoctoproject.org/meta-raspberrypi
 	branch = master
 [submodule "sources/poky"]
-	path = sources/poky
+	path = yocto/source/poky
 	url = git://git.yoctoproject.org/poky
 	branch = thud

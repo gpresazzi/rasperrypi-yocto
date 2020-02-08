@@ -1,5 +1,10 @@
 To build the docker machine:
 ```
 cd ./docker
-./run.sh
+./build.sh
+```
+
+Run
+```
+docker run -it --rm -v $PWD/yocto/output:/home/yoctouser/yocto/output yocto-image:latest
 ```

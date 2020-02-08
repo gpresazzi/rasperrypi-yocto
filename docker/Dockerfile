@@ -5,6 +5,7 @@ FROM ubuntu:16.04
 # Install all the Linux packages required for Yocto builds. Note that the packages python3,
 # tar, locales and cpio are not listed in the official Yocto documentation. The build, however,
 # without them.
+
 RUN apt-get update && apt-get -y install gawk wget git-core diffstat unzip texinfo gcc-multilib \
      build-essential chrpath socat cpio python python3 python3-pip python3-pexpect \
      xz-utils debianutils iputils-ping libsdl1.2-dev xterm tar locales
@@ -30,9 +31,6 @@ ENV PROJECT yoctoprj
 ARG host_uid=1001
 ARG host_gid=1001
 
-ENTRYPOINT echo $host_id
-ENTRYPOINT echo $host_gid
-
 RUN groupadd -g $host_gid $USER_NAME && useradd -g $host_gid -m -s /bin/bash -u $host_uid $USER_NAME
 
 # Perform the Yocto build as user cuteradio (not as root).
@@ -50,13 +48,11 @@ RUN mkdir -p $BUILD_INPUT_DIR $BUILD_OUTPUT_DIR
 
 # Clone the repositories of the meta layers into the directory $BUILD_INPUT_DIR/sources/cuteradio.
 WORKDIR $BUILD_INPUT_DIR
-RUN git clone --recurse-submodules https://github.com/gpresazzi/rasperrypi-yocto.git
+#RUN git clone --recurse-submodules https://github.com/gpresazzi/rasperrypi-yocto.git
 
 # Prepare Yocto's build environment. If TEMPLATECONF is set, the script oe-init-build-env will
 # install the customised files bblayers.conf and local.conf. This script initialises the Yocto
 # build environment. The bitbake command builds the rootfs for our embedded device.
 WORKDIR $BUILD_OUTPUT_DIR
-ENV TEMPLATECONF=$BUILD_INPUT_DIR/$PROJECT/sources/meta-$PROJECT/custom
-CMD source $BUILD_INPUT_DIR/$PROJECT/sources/poky/oe-init-build-env build \
-    && bitbake $PROJECT-image
-
+#ENV TEMPLATECONF=$BUILD_INPUT_DIR/$PROJECT/sources/meta-$PROJECT/custom
+#CMD source $BUILD_INPUT_DIR/$PROJECT/sources/poky/oe-init-build-env && bitbake $PROJECT-image
