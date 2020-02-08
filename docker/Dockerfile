@@ -44,13 +44,13 @@ USER $USER_NAME
 
 # Create the directory structure for the Yocto build in the container. The lowest two directory
 # levels must be the same as on the host.
-ENV BUILD_INPUT_DIR /home/$USER_NAME/yocto/input
+ENV BUILD_INPUT_DIR /home/$USER_NAME/yocto/source
 ENV BUILD_OUTPUT_DIR /home/$USER_NAME/yocto/output
 RUN mkdir -p $BUILD_INPUT_DIR $BUILD_OUTPUT_DIR
 
 # Clone the repositories of the meta layers into the directory $BUILD_INPUT_DIR/sources/cuteradio.
 WORKDIR $BUILD_INPUT_DIR
-RUN git clone --recurse-submodules https://github.com/bstubert/$PROJECT.git
+RUN git clone --recurse-submodules https://github.com/gpresazzi/rasperrypi-yocto.git
 
 # Prepare Yocto's build environment. If TEMPLATECONF is set, the script oe-init-build-env will
 # install the customised files bblayers.conf and local.conf. This script initialises the Yocto
@@ -59,3 +59,4 @@ WORKDIR $BUILD_OUTPUT_DIR
 ENV TEMPLATECONF=$BUILD_INPUT_DIR/$PROJECT/sources/meta-$PROJECT/custom
 CMD source $BUILD_INPUT_DIR/$PROJECT/sources/poky/oe-init-build-env build \
     && bitbake $PROJECT-image
+
